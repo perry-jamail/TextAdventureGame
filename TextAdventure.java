@@ -12,6 +12,8 @@ public class TextAdventure {
     String playerName;
     int money;
     Random randomGenerator = new Random();
+    int luck;
+    int ogreHP;
 
     public TextAdventure() {
 
@@ -24,6 +26,8 @@ public class TextAdventure {
         money = 10;
         armor = "none";
         armorHP = 0;
+        luck = 4;
+        ogreHP = 50;
 
         System.out.println();
         System.out.println("----------------------------------------------------------------------------");
@@ -35,7 +39,7 @@ public class TextAdventure {
             playerName = myScanner.nextLine();
             System.out.println();
             System.out.println("Hello " + playerName + "! Ready for an adventure? Let's get started!");
-            System.out.println("Your health is " + hp + ", your starting weapon are your " + weapon + ", and you have 10 crowns (the local currency)!");
+            System.out.println("Your health is " + hp + ", your starting weapon are your " + weapon + ", your luck is " + luck + "/10, and you have 10 crowns (the local currency)!");
             System.out.println();
             System.out.println("----------------------------------------------------------------------------");
 
@@ -89,6 +93,7 @@ public class TextAdventure {
         } else if (a == 2) {
             System.out.println();
             System.out.println("You have chosen not to go on this journey.");
+            System.out.println();
             gameOver();
         }
     }
@@ -191,23 +196,27 @@ public class TextAdventure {
             switch (dieRoll) {
                 case 1:
                 System.out.println("You gave the thieves all of your crowns and they decided to kill you anyways.");
+                System.out.println();
                 gameOver();
                 break;
 
                 case 2:
                 System.out.println("You gave the thieves all of your crowns and they decided to kill you anyways.");
+                System.out.println();
                 gameOver();
                 break;
 
                 case 3:
                 System.out.println("You gave the thieves all of your crowns and they decided to kill you anyways.");
+                System.out.println();
                 gameOver();
                 break;
 
                 case 4:
                 hp -= 50;
                 money = 0;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                luck++;
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -216,7 +225,8 @@ public class TextAdventure {
                 case 5:
                 hp -= 50;
                 money = 0;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                luck++;
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -225,7 +235,8 @@ public class TextAdventure {
                 case 6:
                 hp -= 50;
                 money = 0;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                luck++;
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -233,12 +244,15 @@ public class TextAdventure {
             }
         } else if (a == 1 && money == 0) {
             System.out.println("You have no crowns so the thieves kill you. Because of their strength in numbers there is nothing you can do to save yourself.");
+            System.out.println();
             gameOver();
         } else if (a == 2) {
             System.out.println("There are too many thieves for you to battle and they easily overtake and kill you.");
+            System.out.println();
             gameOver();
         } else if (a == 3) {
             System.out.println("The gang of thieves are experts at traversing the mountain range and easily catch up to you, overtake you, and kill you.");
+            System.out.println();
             gameOver();
         }
     }
@@ -312,7 +326,7 @@ public class TextAdventure {
             break;
 
             case 2:
-            System.out.println("Two crowns! You were hopefully for more treasure than that and walk back towards the main path dissapointed.");
+            System.out.println("Two crowns! You were hopeful for more treasure than that and walk back towards the main path dissapointed.");
             money += 2;
             System.out.println();
             System.out.println("Your discovery increases your total crowns to " + money + ".");
@@ -339,8 +353,9 @@ public class TextAdventure {
             money += 12;
             armor = "lightly used chainmail";
             armorHP += 50;
+            luck++;
             System.out.println();
-            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you " + armorHP + " bonus health points!");
+            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you " + armorHP + " bonus health points! You also gain one luck point, putting your luck at " + luck + "/10.");
             break;
 
             case 6:
@@ -351,8 +366,9 @@ public class TextAdventure {
             weapon = "old sword";
             weaponHP = 20;
             weaponDMG = 34;
+            luck++;
             System.out.println();
-            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you " + armorHP + " bonus health points! Your weapon is now an " + weapon + ", and it does " + weaponDMG + " per hit!");
+            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you " + armorHP + " bonus health points! Your weapon is now an " + weapon + ", and it does " + weaponDMG + " damage per hit! You also gain one luck point, putting your luck at " + luck + "/10.");
             break;
         }
         
@@ -391,8 +407,100 @@ public class TextAdventure {
         if (a == 1) {
             System.out.println();
             System.out.println("You have decided to join in the fight to save Castle Bonum! You rush to the castle walls and see an army of Ogres storming the castle. You pick your target and engage in battle!");
-            
+            System.out.println();
+            System.out.println("Press 1 to initialize battle with a looming Ogre!");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                ogreBattlePlayerTurn();
+            }
+        } else if (a == 2) {
+            System.out.println();
+            System.out.println("You run from the fight and Castle Bonum falls to the invading Ogres. The Noble King is dead and you are eventually caught by the Ogre army and killed.");
+            System.out.println();
+            gameOver();
         }
+    }
+
+    public void ogreBattlePlayerTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+            if (attack > luck) {
+                System.out.println();
+                System.out.println("You swing and miss! The ogre takes 0 damage and his health remains at " + ogreHP + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int a = myScanner.nextInt();
+                if (a == 1) {
+                    ogreBattleOgreTurn();
+                } else {
+                    ogreBattleOgreTurn();
+                }
+            } else if (attack <= luck) {
+                ogreHP -= weaponDMG;
+                if (ogreHP > 0) {
+                    System.out.println();
+                    System.out.println("You swing with your " + weapon + " and successfully hit the ogre, dealing " + weaponDMG + " damage to it! The ogre's health is now at " + ogreHP + " health points.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int b = myScanner.nextInt();
+                    if (b == 1) {
+                        ogreBattleOgreTurn();
+                    } else {
+                        ogreBattleOgreTurn();
+                    }
+                } else {
+                    System.out.println();
+                    System.out.println("You have successfully killed the ogre! This changes the tide of the battle for Castle Bonum and the Noble Army is able to beat back the invading Ogre Army! Upon hearing of your brave act the king requests to speak with you!");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        postOgreBattle();
+                    } else {
+                        postOgreBattle();
+                    }
+                }
+
+            }
+    }
+
+    public void ogreBattleOgreTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+        if (attack <= luck) {
+            System.out.println();
+            System.out.println("The ogre swings and misses! You take 0 damage and your health remains at " + hp + " health points!");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                ogreBattlePlayerTurn();
+            } else {
+                ogreBattlePlayerTurn();
+            }
+        } else if (attack > luck) {
+            int ogreDMG = 15;
+            hp -= ogreDMG;
+            if (hp > 0) {
+                System.out.println();
+                System.out.println("The ogre swings and hits you! You take " + ogreDMG + " damage and are now at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    ogreBattlePlayerTurn();
+                } else {
+                    ogreBattlePlayerTurn();
+                }
+            } else {
+                System.out.println();
+                System.out.println("The ogre deals the final killing blow to you and you die.");
+                System.out.println();
+                gameOver();
+            }
+        }
+    }
+
+    public void postOgreBattle() {
+        System.out.println("This works!");
     }
 
     public void sackedCastleBonum() {
@@ -404,6 +512,7 @@ public class TextAdventure {
     }
 
     public void gameOver() {
+        System.out.println("----------------------------------------------------------------------------");
         System.out.println();
         System.out.println("GAME OVER");
         System.out.println();
