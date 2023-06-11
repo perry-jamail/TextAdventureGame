@@ -12,6 +12,9 @@ public class TextAdventure {
     Random randomGenerator = new Random();
     int luck;
     int ogreHP;
+    int goblinHP;
+    int trollHP;
+    int goblinLord;
 
     public TextAdventure() {
 
@@ -24,7 +27,6 @@ public class TextAdventure {
         money = 10;
         armor = "none";
         luck = 5;
-        ogreHP = 30;
 
         System.out.println();
         System.out.println("----------------------------------------------------------------------------");
@@ -389,6 +391,8 @@ public class TextAdventure {
     }
 
     public void invasionOfCastleBonum() {
+        ogreHP = 40;
+
         System.out.println();
         System.out.println("After many tiring days of travel you finally come to the mighty Castle Bonum, home of the honorable human clan of Ius. The people here are ruled by the Noble King, a very generous and giving king who is known for helping those in need.");
         System.out.println();
@@ -581,7 +585,9 @@ public class TextAdventure {
                 System.out.println();
                 System.out.println("You have chosen the " + weapon + "! It is light in your hands. This weapon deals " + weaponDMG + " damage and your luck has increased by 1 point, putting you at " + luck + "/10 luck.");
                 System.out.println();
-                System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland. You approach the castle and enter.");
+                System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland.");
+                System.out.println();
+                System.out.println("You approach the castle and enter.");
                 System.out.println();
                 System.out.print("Press 1 to continue: ");
                 int c = myScanner.nextInt();
@@ -609,7 +615,9 @@ public class TextAdventure {
             System.out.println();
             System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the king's food and water! You also gained a luck point from this and are now at " + luck + "/10 luck.");
             System.out.println();
-            System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland. You face the wasteland and enter.");
+            System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland.");
+            System.out.println();
+            System.out.println("You face the wasteland and enter.");
             System.out.println();
             System.out.print("Press 1 to continue: ");
             int c = myScanner.nextInt();
@@ -637,6 +645,133 @@ public class TextAdventure {
     }
 
     public void castleDiaboli() {
+        goblinHP = 60;
+        trollHP = 80;
+        int trollDMG = 34;
+        goblinLord = 100;
+        int goblinLordDMG = 50;
+
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("As the castle doors slam shut behind you and leave you in almost complete darkness, you hear the screeching of goblins scurrying throughout the halls of Castle Diaboli. You shiver in fear but steel yourself and push inwards. As you carefully creep your way through the castle you are suddenly swarmed by a Pack of Goblins!");
+        System.out.println();
+        System.out.print("Press 1 to defend yourself from the Goblin Pack! ");
+        int a = myScanner.nextInt();
+        if (a == 1) {
+            goblinBattlePlayerTurn();
+        }
+    }
+
+    public void goblinBattlePlayerTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+            if (attack > luck) {
+                System.out.println();
+                System.out.println("You swing and miss! The Pack of Goblins take 0 damage and their health remains at " + goblinHP + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int a = myScanner.nextInt();
+                if (a == 1) {
+                    goblinBattleGoblinTurn();
+                } else {
+                    goblinBattleGoblinTurn();
+                }
+            } else if (attack <= luck) {
+                goblinHP -= weaponDMG;
+                if (goblinHP > 0) {
+                    System.out.println();
+                    System.out.println("You swing with your " + weapon + " and successfully hit the Pack of Goblins, dealing " + weaponDMG + " damage to them! The Goblin's health is now at " + goblinHP + " health points.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int b = myScanner.nextInt();
+                    if (b == 1) {
+                        goblinBattleGoblinTurn();
+                    } else {
+                        goblinBattleGoblinTurn();
+                    }
+                } else {
+                    hp += 70;
+                    armor = "Iron Chainmail";
+                    if (luck < 9) {
+                        luck++;
+                    }
+                    System.out.println();
+                    System.out.println("You have successfully killed the Pack of Goblins!");
+                    System.out.println();
+                    System.out.println("Among the remains you see a shining set of iron armor, which you promptly equip. The " + armor + " gives you 70 extra health points, putting your health at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/10.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        postGoblinBattle();
+                    } else {
+                        postGoblinBattle();
+                    }
+                }
+
+            }
+    }
+
+    public void goblinBattleGoblinTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+        if (attack <= luck) {
+            System.out.println();
+            System.out.println("The Goblins swing and miss! You take 0 damage and your health remains at " + hp + " health points!");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                goblinBattlePlayerTurn();
+            } else {
+                goblinBattlePlayerTurn();
+            }
+        } else if (attack > luck) {
+            int goblinDMG = 25;
+            hp -= goblinDMG;
+            if (hp > 0) {
+                System.out.println();
+                System.out.println("The Goblins swing and hit you! You take " + goblinDMG + " damage and are now at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    goblinBattlePlayerTurn();
+                } else {
+                    goblinBattlePlayerTurn();
+                }
+            } else {
+                System.out.println();
+                System.out.println("The Goblins deal the final killing blow to you and you die.");
+                System.out.println();
+                gameOver();
+            }
+        }
+    }
+
+    public void postGoblinBattle() {
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("You find yourself wondering down a long hallway until you come upon a split in the path. Both paths look identical, which do you choose?");
+        System.out.println();
+        System.out.println("1) The left path");
+        System.out.println("2) The right path");
+        int a = myScanner.nextInt();
+
+        if (a == 1) {
+            trollBattlePlayerTurn();
+        } else if (a == 2) {
+            castleDiaboliTreasureRoom();
+        }
+    }
+
+    public void castleDiaboliTreasureRoom() {
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+    }
+
+    public void trollBattlePlayerTurn() {
+        System.out.println();
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
     }
