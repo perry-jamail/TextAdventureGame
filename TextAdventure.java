@@ -654,7 +654,6 @@ public class TextAdventure {
         goblinHP = 70;
         trollHP = 110;
         goblinLordHP = 100;
-        int goblinLordDMG = 50;
 
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
