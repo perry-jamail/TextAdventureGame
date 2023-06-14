@@ -14,7 +14,7 @@ public class TextAdventure {
     int ogreHP;
     int goblinHP;
     int trollHP;
-    int goblinLordHP;
+    int dragonLordMalumHP;
     String vrb;
 
     public TextAdventure() {
@@ -24,10 +24,10 @@ public class TextAdventure {
     public void startGame() {
         hp = 100;
         weapon = "fists";
-        weaponDMG = 10;
+        weaponDMG = 15;
         money = 30;
         armor = "none";
-        luck = 5;
+        luck = 4;
         vrb = "swing";
 
         System.out.println();
@@ -534,7 +534,7 @@ public class TextAdventure {
                 System.out.println("You thank the Noble King and accept his gifts. You gain one luck point from this, putting your total luck to " + luck + "/10. You follow your company of Noble Knights into the armory to select your weapon. You may choose from: ");
                 System.out.println();
                 System.out.println("1) A Balanced Sword. This weapon deals moderate damage and does not affect your luck.");
-                System.out.println("2) A Heavy Axe. This weapon deals above average damage but decreases your luck by 2 points.");
+                System.out.println("2) A Heavy Axe. This weapon deals above average damage but decreases your luck by 1 points.");
                 System.out.println("3) A Light Bow. This weapon deals below average damage but increases your luck by 1 point.");
             }
             int b = myScanner.nextInt();
@@ -562,13 +562,13 @@ public class TextAdventure {
                 weapon = "Iusus Axe";
                 weaponDMG = 50;
                 vrb = "swing";
-                if (luck >= 3) {
-                    luck -= 2;
+                if (luck >= 2) {
+                    luck --;
                 } else if (luck < 3) {
                     luck = 1;
                 }
                 System.out.println();
-                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 2 points, putting you at " + luck + "/10 luck.");
+                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 1 point, putting you at " + luck + "/10 luck.");
                 System.out.println();
                 System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland. You approach the castle and enter.");
                 System.out.println();
@@ -653,7 +653,7 @@ public class TextAdventure {
     public void castleDiaboli() {
         goblinHP = 70;
         trollHP = 110;
-        goblinLordHP = 100;
+        dragonLordMalumHP = 150;
 
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
@@ -755,7 +755,7 @@ public class TextAdventure {
         System.out.println();
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("You find yourself wondering down a long hallway until you come upon a split in the path. Both paths look identical, which do you choose?");
+        System.out.println("You find yourself wandering down a long hallway until you come upon a split in the path. Both paths look identical, which do you choose?");
         System.out.println();
         System.out.println("1) The left path");
         System.out.println("2) The right path");
@@ -779,7 +779,7 @@ public class TextAdventure {
         System.out.println();
         if (hp < 75) {
             hp += 25;
-            System.out.println("As you carefully explore the lengthy hallway down the left path you come across a room full of precious treasure! You gain 200 crowns from this discovery, putting you at " + money + " total crowns! You also find a puddle of water to recover from your fight with the goblins. You gain 25 health, putting you at " + hp + " health points.");
+            System.out.println("As you carefully explore the lengthy hallway down the right path you come across a room full of precious treasure! You gain 200 crowns from this discovery, putting you at " + money + " total crowns! You also find a puddle of water to recover from your fight with the goblins. You gain 25 health, putting you at " + hp + " health points.");
             System.out.println();
             System.out.println("You then follow the path leading out of the treasure room and into a grand room smelling heavily of rotting flesh...");
             System.out.println();
@@ -821,6 +821,7 @@ public class TextAdventure {
         if (a == 1) {
             System.out.println();
             System.out.println("As you attempt to run past the massive Troll he easily scoops you up and swallows you whole for a tiny and unsatisfactory dessert.");
+            System.out.println();
             gameOver();
         } else if (a == 2) {
             System.out.println();
@@ -835,28 +836,48 @@ public class TextAdventure {
             System.out.println();
             System.out.println("Looking around the Troll's massive room you get an idea. \"What if I can help you with this mighty collection you have here?\" you say, pointing to the piles of silver and gold crowns littered throughout the room. \"Oh?\" the troll ponders. After a minute he says, \"Sure. Give me all your valuables and I'll let you pass.\"");
             System.out.println();
-            if (money >= 200) {
-                System.out.println("You give the troll " + money + " crowns, putting you at 0. After counting his plunder he lets you pass safely.");
-                System.out.println();
-                System.out.print("Press 1 to continue: ");
-                int c = myScanner.nextInt();
-                if (c == 1) {
+            System.out.println("Give the Troll all of your crowns?");
+            System.out.println();
+            System.out.println("1) Yes");
+            System.out.println("2) No");
+            int e = myScanner.nextInt();
+            if (e == 1) {
+                if (money >= 200) {
                     System.out.println();
-                    System.out.println("----------------------------------------------------------------------------");
+                    System.out.println("You give the troll " + money + " crowns, putting you at 0. After counting his plunder he lets you pass safely.");
                     System.out.println();
-                    postTroll();
-                } else {
+                    System.out.print("Press 1 to continue: ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        System.out.println();
+                        postTroll();
+                    } else {
+                        System.out.println();
+                        System.out.println("----------------------------------------------------------------------------");
+                        System.out.println();
+                        postTroll();
+                    }
+                } else if (money < 200) {
                     System.out.println();
-                    System.out.println("----------------------------------------------------------------------------");
+                    System.out.println("You give the troll " + money + " crowns, putting you at 0. He counts his plunder, unsatisfied with how much you have to offer. \"This is not enough!\" the Troll says, \"Now prepare to be dessert!\"");
                     System.out.println();
-                    postTroll();
+                    System.out.print("Press 1 to initialize battle with the Troll! ");
+                    int d = myScanner.nextInt();
+                    if (d == 1) {
+                        System.out.println();
+                        trollBattlePlayerTurn();
+                    } else {
+                        System.out.println();
+                        trollBattlePlayerTurn();
+                    }
                 }
-            } else if (money < 200) {
-                System.out.println("You give the troll " + money + " crowns, putting you at 0. He counts his plunder, unsatisfied with how much you have to offer. \"This is not enough!\" the Troll says, \"Now prepare to be dessert!\"");
+            } else if (e == 2) {
+                System.out.println();
+                System.out.println("You refuse to give the Troll your valuables. He is angered and prepares to fight!");
                 System.out.println();
                 System.out.print("Press 1 to initialize battle with the Troll! ");
-                int d = myScanner.nextInt();
-                if (d == 1) {
+                int f = myScanner.nextInt();
+                if (f == 1) {
                     System.out.println();
                     trollBattlePlayerTurn();
                 } else {
@@ -897,10 +918,12 @@ public class TextAdventure {
                     if (luck < 9) {
                         luck++;
                     }
+                    hp += 100;
+                    money += 400;
                     System.out.println();
-                    System.out.println("You have successfully killed the Troll!");
+                    System.out.println("The Troll falls dead with a mighty crash!");
                     System.out.println();
-                    System.out.println(" You also gain 1 luck point for this encounter, putting your luck at " + luck + "/10.");
+                    System.out.println("You plunder some of the Troll's treasure, taking 400 crowns, putting your total at " + money + " crowns. You also find a vial of healing potion among the Troll's posessions, which you drink. The potion gives you 100 health, putting you at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/10.");
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -954,7 +977,68 @@ public class TextAdventure {
         System.out.println();
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
-        System.out.println("This works!");
+        System.out.println("You walk out of the Troll's chambers lucky to be alive. As you push forward you come across a split in the path once again. Choose which way to go:");
+        System.out.println();
+        System.out.println("1) Take the left path");
+        System.out.println("2) Take the middle path");
+        System.out.println("3) Take the right path");
+        int a = myScanner.nextInt();
+
+        if (a == 1) {
+            System.out.println();
+            System.out.println("You have chosen to go down the left path. As you walk the hallway gets warmer and warmer...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 2) {
+            System.out.println();
+            System.out.println("You have chosen to go down the middle path. You see the shimmer of water reflecting off the cold stone of the castle walls as you walk...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                preMalumTreasure();
+            } else {
+                System.out.println();
+                preMalumTreasure();
+            }
+        } else if (a == 3) {
+            System.out.println();
+            System.out.println("You have chosen to go down the right path. There is no sign of an end as you walk through the long, winding halls...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                labyrinth();
+            } else {
+                System.out.println();
+                labyrinth();
+            }
+        }
+    }
+
+    public void labyrinth() {
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+    }
+
+    public void preMalumTreasure() {
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+    }
+
+    public void dragonLordMalum() {
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
     }
 
     public void gameOver() {
