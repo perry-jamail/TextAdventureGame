@@ -27,7 +27,7 @@ public class TextAdventure {
         weaponDMG = 15;
         money = 30;
         armor = "none";
-        luck = 4;
+        luck = 5;
         vrb = "swing";
 
         System.out.println();
@@ -534,7 +534,7 @@ public class TextAdventure {
                 System.out.println("You thank the Noble King and accept his gifts. You gain one luck point from this, putting your total luck to " + luck + "/10. You follow your company of Noble Knights into the armory to select your weapon. You may choose from: ");
                 System.out.println();
                 System.out.println("1) A Balanced Sword. This weapon deals moderate damage and does not affect your luck.");
-                System.out.println("2) A Heavy Axe. This weapon deals above average damage but decreases your luck by 1 points.");
+                System.out.println("2) A Heavy Axe. This weapon deals above average damage but decreases your luck by 2 points.");
                 System.out.println("3) A Light Bow. This weapon deals below average damage but increases your luck by 1 point.");
             }
             int b = myScanner.nextInt();
@@ -562,13 +562,13 @@ public class TextAdventure {
                 weapon = "Iusus Axe";
                 weaponDMG = 50;
                 vrb = "swing";
-                if (luck >= 2) {
-                    luck --;
+                if (luck >= 3) {
+                    luck -= 2;
                 } else if (luck < 3) {
                     luck = 1;
                 }
                 System.out.println();
-                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 1 point, putting you at " + luck + "/10 luck.");
+                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 2 points, putting you at " + luck + "/10 luck.");
                 System.out.println();
                 System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland. You approach the castle and enter.");
                 System.out.println();
@@ -653,7 +653,6 @@ public class TextAdventure {
     public void castleDiaboli() {
         goblinHP = 70;
         trollHP = 110;
-        dragonLordMalumHP = 150;
 
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
@@ -763,12 +762,26 @@ public class TextAdventure {
 
         if (a == 1) {
             System.out.println();
-            System.out.println("You explore the left path. It is a long and dark hallway with a faint glow at the far end of it...");
-            trollTalk();
+            System.out.println("You explore the left path. It has a putrid smell that increases with every step you take...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                trollTalk();
+            } else {
+                trollTalk();
+            }
         } else if (a == 2) {
             System.out.println();
-            System.out.println("You explore the right path. It has a putrid smell that increases with every step you take...");
-            castleDiaboliTreasureRoom();
+            System.out.println("You explore the right path. It is a long and dark hallway with a faint glow at the far end of it...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                castleDiaboliTreasureRoom();
+            } else {
+                castleDiaboliTreasureRoom();
+            }
         }
     }
 
@@ -777,7 +790,7 @@ public class TextAdventure {
         System.out.println();
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
-        if (hp < 75) {
+        if (hp < 85) {
             hp += 25;
             System.out.println("As you carefully explore the lengthy hallway down the right path you come across a room full of precious treasure! You gain 200 crowns from this discovery, putting you at " + money + " total crowns! You also find a puddle of water to recover from your fight with the goblins. You gain 25 health, putting you at " + hp + " health points.");
             System.out.println();
@@ -790,7 +803,7 @@ public class TextAdventure {
             } else {
                 trollTalk();
             }
-        } else if (hp >= 75) {
+        } else if (hp >= 85) {
             System.out.println("As you carefully explore the lengthy hallway down the left path you come across a room full of precious treasure! You gain 200 crowns from this discovery, putting you at " + money + " total crowns!");
             System.out.println();
             System.out.println("You then follow the path leading out of the treasure room and into a grand room smelling heavily of rotting flesh...");
@@ -811,7 +824,7 @@ public class TextAdventure {
         System.out.println();
         System.out.println("You find yourself in a massive room filled wall-to-wall with mounds of gold, silver, and bones. As you enter, a gigantic Troll takes notice of you and turns to inspect his visitor.");
         System.out.println();
-        System.out.println("\"Mmmm... another adventurer?\" mutters the Troll, \"What do you want? Turn back now if you don't want to be tonight's dessert! You are lucky enough that a whole army came through here earlier, I am full and don't need to waste my time with one puny traveler. Nevertheless, I cannot allow you to go any further into the castle, so turn back.\" What do you do?");
+        System.out.println("\"Mmmm... another adventurer?\" mutters the Troll, \"What do you want? Turn back now if you don't want to be tonight's dessert! You are lucky enough that a whole army came through here earlier, I am full and don't need to waste my time with one puny traveler. Nevertheless, I cannot allow you to go any further into the castle, so turn back.\" What do you do? Your health is at " + hp + " health points.");
         System.out.println();
         System.out.println("1) Make a break for it and try to run past the Troll");
         System.out.println("2) Fight your way through the Troll");
@@ -844,7 +857,8 @@ public class TextAdventure {
             if (e == 1) {
                 if (money >= 200) {
                     System.out.println();
-                    System.out.println("You give the troll " + money + " crowns, putting you at 0. After counting his plunder he lets you pass safely.");
+                    System.out.println("You give the Troll " + money + " crowns, putting you at 0. After counting his plunder he lets you pass safely.");
+                    money = 0;
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -859,7 +873,8 @@ public class TextAdventure {
                     }
                 } else if (money < 200) {
                     System.out.println();
-                    System.out.println("You give the troll " + money + " crowns, putting you at 0. He counts his plunder, unsatisfied with how much you have to offer. \"This is not enough!\" the Troll says, \"Now prepare to be dessert!\"");
+                    System.out.println("You give the Troll " + money + " crowns, putting you at 0. He counts his plunder, unsatisfied with how much you have to offer. \"This is not enough!\" the Troll says, \"Now prepare to be dessert!\"");
+                    money = 0;
                     System.out.println();
                     System.out.print("Press 1 to initialize battle with the Troll! ");
                     int d = myScanner.nextInt();
@@ -1027,18 +1042,268 @@ public class TextAdventure {
     }
 
     public void labyrinth() {
+        hp -= 20;
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
+        System.out.println("As you wander down the right path it winds and splits in many directions. Soon enough you attempt to turn back towards the Troll's lair but instead find yourself hopelessly lost. Eventually you begin to thirst and hunger, decreasing your health by 20 points! You now have " + hp + " health points by the time you finally see a faint light at the end of the tunnel. As you walk towards it the hallway becomes warmer and warmer...");
+        System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int a = myScanner.nextInt();
+        if (a == 1) {
+            System.out.println();
+            dragonLordMalum();
+        } else {
+            System.out.println();
+            dragonLordMalum();
+        }
     }
 
     public void preMalumTreasure() {
+        hp += 50;
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
+        System.out.println("You come upon a storage room built on the edge of an underground river flowing with clean water. You drink your fill and gain 50 health, putting you at " + hp + " health points! You also see a variety of weapons and a lone goblin in the corner of the storage room. \"Wanna buy something? You'll need some heavy weaponry if you want to walk out of here alive\" says the Friendly Goblin. Do you want to buy anything? You have " + money + " crowns.");
+        System.out.println();
+        System.out.println("1) Purchase the Giant Crossbow. Deals 60 damage and decreases your luck by 1. - 600 crowns");
+        System.out.println("2) Purchase the Hunter's Longsword. Deals 80 damage and decreases your luck by 2. - 400 crowns");
+        System.out.println("3) Purchase the Great Hammer of Malum. Deals 100 damage and decreases your luck by 3. - 200 crowns");
+        System.out.println("4) Purchase nothing and continue on your journey.");
+        int a = myScanner.nextInt();
+
+        if (a == 1 && money >= 600) {
+            money -= 600;
+            weapon = "Giant Crossbow";
+            vrb = "shoot";
+            weaponDMG = 60;
+            if (luck > 1) {
+                luck --;
+            } else {
+                luck = 1;
+            }
+            System.out.println();
+            System.out.println("You have spent 600 crowns to buy the Giant Crossbow. It deals 60 damage, you now have " + money + " crowns, and your luck decreases by 1 point, putting your luck at " + luck + "/10.");
+            System.out.println();
+            System.out.print("Press 1 to continue on your way: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 1 && money < 600) {
+            System.out.println();
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println();
+            System.out.println("You do not have enough money for this item.");
+            System.out.println();
+            preMalumTreasure();
+        } else if (a == 2 && money >= 400) {
+            money -= 400;
+            weapon = "Hunter's Longsword";
+            vrb = "swing";
+            weaponDMG = 80;
+            if (luck > 2) {
+                luck -= 2;
+            } else {
+                luck = 1;
+            }
+            System.out.println();
+            System.out.println("You have spent 400 crowns to buy the Hunter's Longsword. It deals 80 damage, you now have " + money + " crowns, and your luck decreases by 2, putting your luck at " + luck + "/10.");
+            System.out.println();
+            System.out.print("Press 1 to continue on your way: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 2 && money < 400) {
+            System.out.println();
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println();
+            System.out.println("You do not have enough money for this item.");
+            System.out.println();
+            preMalumTreasure();
+        } else if (a == 3 && money >= 200) {
+            money -= 200;
+            weapon = "Great Hammer of Malum";
+            vrb = "swing";
+            weaponDMG = 100;
+            if (luck > 3) {
+                luck -= 3;
+            } else {
+                luck = 1;
+            }
+            System.out.println();
+            System.out.println("You have spent 200 crowns to buy the Great Hammer of Malum. It deals 100 damage, you now have " + money + " crowns, and your luck decreases by 3 points and is now at " + luck + "/10.");
+            System.out.println();
+            System.out.print("Press 1 to continue on your way: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 3 && money < 200) {
+            System.out.println();
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println();
+            System.out.println("You do not have enough money for this item.");
+            System.out.println();
+            preMalumTreasure();
+        } else if (a == 4) {
+            System.out.println();
+            System.out.println("You purchase nothing and continue further into the castle. You begin to notice the temperature getting warmer and warmer as you approach the brightly glowing end of the hallway...");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                dragonLordMalum();
+            } else {
+                dragonLordMalum();
+            }
+        } else if (a == 5 && money >= 1000) {
+            money -= 1000;
+            weapon = "Gjallarhorn";
+            weaponDMG = 1000;
+            luck = 10;
+            System.out.println();
+            System.out.println("You have spent 1000 crowns to buy Gjallarhorn. It deals 1000 damage, you now have " + money + " crowns, and your luck is now 10/10. Have fun.");
+            System.out.println();
+            System.out.print("Press 1 to continue on your way: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 5 && money < 1000) {
+            System.out.println();
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println();
+            System.out.println("You do not have enough money for this item.");
+            System.out.println();
+            preMalumTreasure();
+        }
     }
 
     public void dragonLordMalum() {
+        dragonLordMalumHP = 250;
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
+        System.out.println("You enter a gargantuan outdoor courtyard engulfed in flames and embers. At the center of the the courtyard stands looming a massive Elder Dragon!! As you survey the rest of the scene your eyes come upon the terrified Princess of Incipiam trapped in a cage in the corner of the arena! The Dragon takes notice of you...");
+        System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int b = myScanner.nextInt();
+        if (b == 1) {
+            System.out.println();
+            System.out.println("\"WELL... WHAT DO WE HAVE HERE? A PUNY ADVENTURER COME TO TAKE THE PRINCESS AWAY FROM ME?! HA!\"");
+            System.out.println("The Dragon suddenly leaps high into the sky and comes crashing down just in front of you, knocking you backwards onto the ground.");
+            System.out.println();
+            System.out.println("\"DO YOU EVEN KNOW WHO YOU CHALLENGE, HERO? I AM ONE OF THE ELDER DRAGONS OF THIS WORLD, ONE OF THE ORIGINAL SCULPTORS OF THIS REALITY! I AM MALUM! AND I WILL NOT BE DEFEATED BY A SOLE PEASANT! NOW... DIE!!");
+            System.out.println();
+            System.out.print("Press 1 to initialize battle with the Great Dragon Lord Malum! ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                malumBattlePlayerTurn();
+            } else {
+                malumBattlePlayerTurn();
+            }
+        }
+    }
+
+    public void malumBattlePlayerTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+            if (attack > luck) {
+                dragonLordMalumHP += 10;
+                System.out.println();
+                System.out.println("You " + vrb + " and miss! Dragon Lord Malum takes 0 damage and he gains 10 health from natural regeneration! His health is now at " + dragonLordMalumHP + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int a = myScanner.nextInt();
+                if (a == 1) {
+                    malumBattleMalumTurn();
+                } else {
+                    malumBattleMalumTurn();
+                }
+            } else if (attack <= luck) {
+                dragonLordMalumHP -= weaponDMG;
+                if (dragonLordMalumHP > 0) {
+                    dragonLordMalumHP += 10;
+                    System.out.println();
+                    System.out.println("You " + vrb + " with your " + weapon + " and successfully hit Dragon Lord Malum, dealing " + weaponDMG + " damage to him! Malum then regains 10 health due to his natural regeneration! Dragon Lord Malum's health is now at " + dragonLordMalumHP + " health points.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int b = myScanner.nextInt();
+                    if (b == 1) {
+                        malumBattleMalumTurn();
+                    } else {
+                        malumBattleMalumTurn();
+                    }
+                } else {
+                    System.out.println();
+                    System.out.println("----------------------------------------------------------------------------");
+                    System.out.println();
+                    System.out.println("A horrible and piercing screech erupts from the Dragon as he comes crashing down in the courtyard, dead!");
+                    System.out.println();
+                    System.out.println("You've done it! You defeated Dragon Lord Malum! You release the fair Princess of Incipiam from her prison and escort her back to the Town of Incipiam where the Duke holds a parade and massive feast in your honor as the Hero of Incipiam!");
+                    System.out.println();
+                    System.out.println("Thank you for playing my Text Adventure Game! Press 1 to start a new game or press 2 to quit the game!");
+                    System.out.println();
+                    System.out.print("> ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        startGame();
+                    } else if (c == 2) {
+                        
+                    }
+                }
+
+            }
+    }
+
+    public void malumBattleMalumTurn() {
+        int attack = randomGenerator.nextInt(10) + 1;
+        if (attack <= luck) {
+            System.out.println();
+            System.out.println("Dragon Lord Malum swings at you and misses! You take 0 damage and your health remains at " + hp + " health points!");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                malumBattlePlayerTurn();
+            } else {
+                malumBattlePlayerTurn();
+            }
+        } else if (attack > luck) {
+            int dragonLordMalumDMG = 50;
+            hp -= dragonLordMalumDMG;
+            if (hp > 0) {
+                System.out.println();
+                System.out.println("Dragon Lord Malum unleashes a fiery blast at you and hits you! You take " + dragonLordMalumDMG + " damage and are now at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    malumBattlePlayerTurn();
+                } else {
+                    malumBattlePlayerTurn();
+                }
+            } else {
+                System.out.println();
+                System.out.println("With a mighty fireball the Great Dragon Lord Malum burns you to ashes.");
+                System.out.println();
+                malumGameOver();
+            }
+        }
     }
 
     public void gameOver() {
@@ -1052,6 +1317,26 @@ public class TextAdventure {
             startGame();
         } else {
             gameOver();
+        }
+    }
+
+    public void malumGameOver() {
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("GAME OVER");
+        System.out.println();
+        System.out.print("To start over at the fight with Dragon Lord Malum with health at 100, press 1. To start a new game, press 2: ");
+        int restart = myScanner.nextInt();
+        if (restart == 1) {
+            hp = 100;
+            System.out.println();
+            dragonLordMalum();
+        } else if (restart == 2) {
+            System.out.println();
+            startGame();
+        } else {
+            System.out.println();
+            malumGameOver();
         }
     }
 
