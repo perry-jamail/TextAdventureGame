@@ -22,12 +22,10 @@ public class TextAdventure {
     }
 
     public void startGame() {
-        hp = 100;
         weapon = "fists";
         weaponDMG = 15;
         money = 30;
         armor = "none";
-        luck = 5;
         vrb = "swing";
 
         System.out.println();
@@ -39,12 +37,37 @@ public class TextAdventure {
             System.out.print("Please enter your adventurer's name: ");
             playerName = myScanner.nextLine();
             System.out.println();
-            System.out.println("Hello " + playerName + "! Ready for an adventure? Let's get started!");
+            System.out.println("Hello " + playerName + "! Ready for an adventure? Select a difficulty to get started!");
+            System.out.println();
+            System.out.println("1) Easy");
+            System.out.println("2) Normal");
+            System.out.println("3) Hard");
+            System.out.println("4) Impossible");
+            int a = myScanner.nextInt();
+
+            if (a == 1) {
+                luck = 6;
+                hp = 115;
+            } else if (a == 2) {
+                luck = 5;
+                hp = 100;
+            } else if (a == 3) {
+                luck = 4;
+                hp = 85;
+            } else if (a == 4) {
+                luck = 3;
+                hp = 70;
+            }
+            System.out.println();
             System.out.println("Your health is " + hp + ", your starting weapon are your " + weapon + ", your luck is " + luck + "/10, and you have " + money + " crowns (the local currency)!");
             System.out.println();
-            System.out.println("----------------------------------------------------------------------------");
-
-            startingVillage();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                System.out.println("----------------------------------------------------------------------------");
+                startingVillage();
+            }
         }
     }
 
@@ -523,9 +546,15 @@ public class TextAdventure {
                 luck++;
             }
             System.out.println();
-            System.out.println("\"Excellent!\" says the king. You are led to a room to wait for dinner. After some time a royal servant leads you to the king's feast. At the feast you eat and drink until you are full. This increases your health back to 100 health points! You then explain your journey to the king. He replies:");
+            System.out.println("\"Excellent!\" says the king. You are led to a room to wait for dinner. After some time a royal servant leads you to the king's feast. At the feast you eat and drink until you are full. This increases your health back to 100 health points! You then explain your journey to the king.");
             System.out.println();
-            System.out.println("\"Your journey is most honorable and good! I will do my part in aiding your quest to Castle Diaboli to rescue the Princess of Incipiam by providing you with full access to my armory and a full company of Noble Knights on your quest! However, my only wish is that my men do not step inside the castle walls of Diaboli, for it is a foul place filled with evil. The time to cleanse that place will come, but not today. I wish you the best of luck in conquering anything you may face within the walls of Diaboli, but my men must not step into that place.\"");
+            System.out.print("Press 1 to continue: ");
+            int d = myScanner.nextInt();
+            if (d == 1) {
+
+            }
+            System.out.println();
+            System.out.println("The king replies: \"Your journey is most honorable and good! I will do my part in aiding your quest to Castle Diaboli to rescue the Princess of Incipiam by providing you with full access to my armory and a full company of Noble Knights on your quest! However, my only wish is that my men do not step inside the castle walls of Diaboli, for it is a foul place filled with evil. The time to cleanse that place will come, but not today. I wish you the best of luck in conquering anything you may face within the walls of Diaboli, but my men must not step into that place.\"");
             System.out.println();
             System.out.print("Press 1 to continue: ");
             int cont = myScanner.nextInt();
@@ -1208,7 +1237,7 @@ public class TextAdventure {
             System.out.println("\"WELL... WHAT DO WE HAVE HERE? A PUNY ADVENTURER COME TO TAKE THE PRINCESS AWAY FROM ME?! HA!\"");
             System.out.println("The Dragon suddenly leaps high into the sky and comes crashing down just in front of you, knocking you backwards onto the ground.");
             System.out.println();
-            System.out.println("\"DO YOU EVEN KNOW WHO YOU CHALLENGE, HERO? I AM ONE OF THE ELDER DRAGONS OF THIS WORLD, ONE OF THE ORIGINAL SCULPTORS OF THIS REALITY! I AM MALUM! AND I WILL NOT BE DEFEATED BY A SOLE PEASANT! NOW... DIE!!");
+            System.out.println("\"DO YOU EVEN KNOW WHO YOU CHALLENGE, \"HERO\"? I AM ONE OF THE ELDER DRAGONS OF THIS WORLD, ONE OF THE ORIGINAL SCULPTORS OF THIS REALITY! I AM MALUM! AND I WILL NOT BE DEFEATED BY A SOLE PEASANT! NOW... DIE!!");
             System.out.println();
             System.out.print("Press 1 to initialize battle with the Great Dragon Lord Malum! ");
             int a = myScanner.nextInt();
