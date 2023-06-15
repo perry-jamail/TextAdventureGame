@@ -16,6 +16,7 @@ public class TextAdventure {
     int trollHP;
     int dragonLordMalumHP;
     String vrb;
+    int gangOfThievesHP;
 
     public TextAdventure() {
 
@@ -242,7 +243,14 @@ public class TextAdventure {
                 luck++;
                 System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+
+                }
+                System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
+                System.out.println();
                 castleBonum();
                 break;
 
@@ -252,7 +260,14 @@ public class TextAdventure {
                 luck++;
                 System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int c = myScanner.nextInt();
+                if (c == 1) {
+                    
+                }
+                System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
+                System.out.println();
                 castleBonum();
                 break;
 
@@ -262,7 +277,14 @@ public class TextAdventure {
                 luck++;
                 System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int d = myScanner.nextInt();
+                if (d == 1) {
+                    
+                }
+                System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
+                System.out.println();
                 castleBonum();
                 break;
             }
@@ -271,13 +293,102 @@ public class TextAdventure {
             System.out.println();
             gameOver();
         } else if (a == 2) {
-            System.out.println("There are too many thieves for you to battle and they easily overtake and kill you.");
-            System.out.println();
-            gameOver();
+            gangOfThievesHP = 40;
+            System.out.print("You prepare to fight the Gang of Thieves! Press 1 to initialize battle! ");
+            int fight = myScanner.nextInt();
+            if (fight == 1) {
+                thievesBattlePlayerTurn();
+            } else {
+                thievesBattlePlayerTurn();
+            }
         } else if (a == 3) {
             System.out.println("The gang of thieves are experts at traversing the mountain range and easily catch up to you, overtake you, and kill you.");
             System.out.println();
             gameOver();
+        }
+    }
+
+    public void thievesBattlePlayerTurn() {
+        int attack = randomGenerator.nextInt(20) + 1;
+            if (attack > luck) {
+                System.out.println();
+                System.out.println("You " + vrb + " and miss! The Gang of Thieves takes 0 damage and their health remains at " + gangOfThievesHP + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int a = myScanner.nextInt();
+                if (a == 1) {
+                    thievesBattleThievesTurn();
+                } else {
+                    thievesBattleThievesTurn();
+                }
+            } else if (attack <= luck) {
+                gangOfThievesHP -= weaponDMG;
+                if (gangOfThievesHP > 0) {
+                    System.out.println();
+                    System.out.println("You " + vrb + " with your " + weapon + " and successfully hit the Gang of Thieves, dealing " + weaponDMG + " damage to them! Their health is now at " + gangOfThievesHP + " health points.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int b = myScanner.nextInt();
+                    if (b == 1) {
+                        thievesBattleThievesTurn();
+                    } else {
+                        thievesBattleThievesTurn();
+                    }
+                } else {
+                    money += 200;
+                    hp += 30;
+                    System.out.println();
+                    System.out.println("You have successfully killed the Gang of Thieves!");
+                    System.out.println();
+                    System.out.println("You loot 200 crowns and a small vial of healing potion from them, bringing your total crowns to " + money + ". You drink the small vial of healing potion, increasing your health by 30 points and putting your total at " + hp + " health points. You then continue through the treacherous mountain range and on towards Castle Bonum.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        System.out.println();
+                        castleBonum();
+                    } else {
+                        System.out.println();
+                        castleBonum();
+                    }
+                }
+
+            }
+    }
+
+    public void thievesBattleThievesTurn() {
+        int attack = randomGenerator.nextInt(20) + 1;
+        if (attack <= luck) {
+            System.out.println();
+            System.out.println("The Gang of Thieves swing and miss! You take 0 damage and your health remains at " + hp + " health points!");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                thievesBattlePlayerTurn();
+            } else {
+                thievesBattlePlayerTurn();
+            }
+        } else if (attack > luck) {
+            int gangOfThievesDMG = 15;
+            hp -= gangOfThievesDMG;
+            if (hp > 0) {
+                System.out.println();
+                System.out.println("The Gang of Thieves swing and hit you! You take " + gangOfThievesDMG + " damage and are now at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    thievesBattlePlayerTurn();
+                } else {
+                    thievesBattlePlayerTurn();
+                }
+            } else {
+                System.out.println();
+                System.out.println("The Gang of Thieves deal the final killing blow to you and you die.");
+                System.out.println();
+                gameOver();
+            }
         }
     }
 
@@ -413,7 +524,40 @@ public class TextAdventure {
     ////////////////////////////////////////
 
     public void castleBonum() {
-        
+        hp += 30;
+        weapon = "Iusus Sword";
+        weaponDMG = 34;
+        System.out.println("You enter the magnificent Castle Bonum which is alive with the sights and sounds of townfolk doing business in the castle center. You make your way through the crowd and into the King's Court, where there is a line of people all waiting to be heard by the King. The line moves fast and you quickly reach the podium for your chance to ask the King for help.");
+        System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int b = myScanner.nextInt();
+        if (b == 1) {
+
+        }
+        System.out.println();
+        System.out.println("You humbly explain your journey to the Noble King. The King raises an eyebrow at your tale and replies, \"Your quest is most honorable and good. I will send with you a small group of Noble Knights to accompany you on your journey up to the Wasteland of Periculum, but they shall go no further than that. I shall also gift you this sword to aid you in the battles to come, as well as some food and water.\" You thank the King and ready yourself to continue your journey with your group of Noble Knights.");
+        System.out.println();
+        System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the King's food and water!");
+        System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int c = myScanner.nextInt();
+        if (c == 1) {
+
+        }
+        System.out.println();
+        System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland.");
+        System.out.println();
+        System.out.println("You face the wasteland and enter.");
+        System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int a = myScanner.nextInt();
+            if (a == 1) {
+                System.out.println();
+                wastelandOfPericulumSouth();
+            } else {
+                System.out.println();
+                wastelandOfPericulumSouth();
+            }
     }
 
     public void invasionOfCastleBonum() {
@@ -1093,53 +1237,24 @@ public class TextAdventure {
         System.out.println();
         System.out.println("You come upon a storage room built on the edge of an underground river flowing with clean water. You drink your fill and gain 50 health, putting you at " + hp + " health points! You also see a variety of weapons and a lone goblin in the corner of the storage room. \"Wanna buy something? You'll need some heavy weaponry if you want to walk out of here alive\" says the Friendly Goblin. Do you want to buy anything? You have " + money + " crowns.");
         System.out.println();
-        System.out.println("1) Purchase the Giant Crossbow. Deals 60 damage and increases your luck by 4. - 700 crowns");
-        System.out.println("2) Purchase the Hunter's Longsword. Deals 80 damage and increases your luck by 2. - 500 crowns");
-        System.out.println("3) Purchase the Great Hammer of Malum. Deals 100 damage and does not effect your luck. - 300 crowns");
+        System.out.println("1) Purchase the Giant Crossbow. Deals 60 damage and increases your luck by 2. - 800 crowns");
+        System.out.println("2) Purchase the Hunter's Longsword. Deals 80 damage and increases your luck by 1. - 600 crowns");
+        System.out.println("3) Purchase the Great Hammer of Malum. Deals 100 damage and does not effect your luck. - 400 crowns");
         System.out.println("4) Purchase nothing and continue on your journey.");
         int a = myScanner.nextInt();
 
-        if (a == 1 && money >= 700) {
-            money -= 700;
+        if (a == 1 && money >= 800) {
+            money -= 800;
             weapon = "Giant Crossbow";
             vrb = "shoot";
             weaponDMG = 60;
-            if (luck < 15) {
-                luck += 4;
-            } else {
-                luck = 18;
-            }
-            System.out.println();
-            System.out.println("You have spent 700 crowns to buy the Giant Crossbow. It deals 60 damage, you now have " + money + " crowns, and your luck increases by 4 points, putting your luck at " + luck + "/20.");
-            System.out.println();
-            System.out.print("Press 1 to continue on your way: ");
-            int b = myScanner.nextInt();
-            if (b == 1) {
-                System.out.println();
-                dragonLordMalum();
-            } else {
-                System.out.println();
-                dragonLordMalum();
-            }
-        } else if (a == 1 && money < 700) {
-            System.out.println();
-            System.out.println("----------------------------------------------------------------------------");
-            System.out.println();
-            System.out.println("You do not have enough money for this item.");
-            System.out.println();
-            preMalumTreasure();
-        } else if (a == 2 && money >= 500) {
-            money -= 400;
-            weapon = "Hunter's Longsword";
-            vrb = "swing";
-            weaponDMG = 80;
             if (luck < 17) {
                 luck += 2;
             } else {
                 luck = 18;
             }
             System.out.println();
-            System.out.println("You have spent 500 crowns to buy the Hunter's Longsword. It deals 80 damage, you now have " + money + " crowns, and your luck increases by 2, putting your luck at " + luck + "/20.");
+            System.out.println("You have spent 800 crowns to buy the Giant Crossbow. It deals 60 damage, you now have " + money + " crowns, and your luck increases by 2 points, putting your luck at " + luck + "/20.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
@@ -1150,20 +1265,49 @@ public class TextAdventure {
                 System.out.println();
                 dragonLordMalum();
             }
-        } else if (a == 2 && money < 500) {
+        } else if (a == 1 && money < 800) {
             System.out.println();
             System.out.println("----------------------------------------------------------------------------");
             System.out.println();
             System.out.println("You do not have enough money for this item.");
             System.out.println();
             preMalumTreasure();
-        } else if (a == 3 && money >= 300) {
-            money -= 200;
+        } else if (a == 2 && money >= 600) {
+            money -= 600;
+            weapon = "Hunter's Longsword";
+            vrb = "swing";
+            weaponDMG = 80;
+            if (luck < 18) {
+                luck ++;
+            } else {
+                luck = 18;
+            }
+            System.out.println();
+            System.out.println("You have spent 600 crowns to buy the Hunter's Longsword. It deals 80 damage, you now have " + money + " crowns, and your luck increases by 1, putting your luck at " + luck + "/20.");
+            System.out.println();
+            System.out.print("Press 1 to continue on your way: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                System.out.println();
+                dragonLordMalum();
+            } else {
+                System.out.println();
+                dragonLordMalum();
+            }
+        } else if (a == 2 && money < 600) {
+            System.out.println();
+            System.out.println("----------------------------------------------------------------------------");
+            System.out.println();
+            System.out.println("You do not have enough money for this item.");
+            System.out.println();
+            preMalumTreasure();
+        } else if (a == 3 && money >= 400) {
+            money -= 400;
             weapon = "Great Hammer of Malum";
             vrb = "swing";
             weaponDMG = 100;
             System.out.println();
-            System.out.println("You have spent 300 crowns to buy the Great Hammer of Malum. It deals 100 damage, you now have " + money + " crowns, and your luck is not effected and is still at " + luck + "/20.");
+            System.out.println("You have spent 400 crowns to buy the Great Hammer of Malum. It deals 100 damage, you now have " + money + " crowns, and your luck is not effected and is still at " + luck + "/20.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
