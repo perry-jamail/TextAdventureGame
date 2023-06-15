@@ -46,20 +46,20 @@ public class TextAdventure {
             int a = myScanner.nextInt();
 
             if (a == 1) {
-                luck = 6;
+                luck = 12;
                 hp = 115;
             } else if (a == 2) {
-                luck = 5;
+                luck = 10;
                 hp = 100;
             } else if (a == 3) {
-                luck = 4;
+                luck = 8;
                 hp = 85;
             } else if (a == 4) {
-                luck = 3;
+                luck = 6;
                 hp = 70;
             }
             System.out.println();
-            System.out.println("Your health is " + hp + ", your starting weapon are your " + weapon + ", your luck is " + luck + "/10, and you have " + money + " crowns (the local currency)!");
+            System.out.println("Your health is " + hp + ", your starting weapon are your " + weapon + ", your luck is " + luck + "/20, and you have " + money + " crowns (the local currency)!");
             System.out.println();
             System.out.print("Press 1 to continue: ");
             int b = myScanner.nextInt();
@@ -240,7 +240,7 @@ public class TextAdventure {
                 hp -= 50;
                 money = 0;
                 luck++;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -250,7 +250,7 @@ public class TextAdventure {
                 hp -= 50;
                 money = 0;
                 luck++;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -260,7 +260,7 @@ public class TextAdventure {
                 hp -= 50;
                 money = 0;
                 luck++;
-                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/10. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
+                System.out.println("You gave the thieves all of your crowns and they decided to beat you up and let you live. You suffer 50 damage from this encounter, putting your health at " + hp + " points. You also now have 0 crowns, but you gain one luck point, putting your luck at " + luck + "/20. As you stagger out of the mountain range you see a bright and brilliant castle off in the distance. You slowly make your way towards the beaming city until you finally reach the castle gates.");
                 System.out.println();
                 System.out.println("----------------------------------------------------------------------------");
                 castleBonum();
@@ -392,7 +392,7 @@ public class TextAdventure {
             vrb = "swing";
             luck++;
             System.out.println();
-            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you 50 bonus health points, putting you at " + hp + "health! Your weapon is now an " + weapon + ", and it does " + weaponDMG + " damage per hit! You also gain one luck point, putting your luck at " + luck + "/10.");
+            System.out.println("Your discovery increases your total crowns to " + money + " and your armor gives you 50 bonus health points, putting you at " + hp + "health! Your weapon is now an " + weapon + ", and it does " + weaponDMG + " damage per hit! You also gain one luck point, putting your luck at " + luck + "/20.");
             break;
         }
         
@@ -448,7 +448,7 @@ public class TextAdventure {
     }
 
     public void ogreBattlePlayerTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
             if (attack > luck) {
                 System.out.println();
                 System.out.println("You " + vrb + " and miss! The Ogre takes 0 damage and his health remains at " + ogreHP + " health points.");
@@ -490,7 +490,7 @@ public class TextAdventure {
     }
 
     public void ogreBattleOgreTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
         if (attack <= luck) {
             System.out.println();
             System.out.println("The ogre swings and misses! You take 0 damage and your health remains at " + hp + " health points!");
@@ -542,7 +542,7 @@ public class TextAdventure {
             if (hp < 100) {
                 hp = 100;
             }
-            if (luck < 9) {
+            if (luck < 18) {
                 luck++;
             }
             System.out.println();
@@ -560,9 +560,9 @@ public class TextAdventure {
             int cont = myScanner.nextInt();
             if (cont == 1) {
                 System.out.println();
-                System.out.println("You thank the Noble King and accept his gifts. You gain one luck point from this, putting your total luck to " + luck + "/10. You follow your company of Noble Knights into the armory to select your weapon. You may choose from: ");
+                System.out.println("You thank the Noble King and accept his gifts. You gain one luck point from this, putting your total luck to " + luck + "/20. You follow your company of Noble Knights into the armory to select your weapon. You may choose from: ");
                 System.out.println();
-                System.out.println("1) A Balanced Sword. This weapon deals moderate damage and does not affect your luck.");
+                System.out.println("1) A Balanced Sword. This weapon deals moderate damage and does not effect your luck.");
                 System.out.println("2) A Heavy Axe. This weapon deals above average damage but decreases your luck by 2 points.");
                 System.out.println("3) A Light Bow. This weapon deals below average damage but increases your luck by 1 point.");
             }
@@ -573,7 +573,7 @@ public class TextAdventure {
                 weaponDMG = 34;
                 vrb = "swing";
                 System.out.println();
-                System.out.println("You have chosen the " + weapon + "! It deals " + weaponDMG + " damage. Your luck remains at " + luck + "/10.");
+                System.out.println("You have chosen the " + weapon + "! It deals " + weaponDMG + " damage. Your luck remains at " + luck + "/20.");
                 System.out.println();
                 System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland. You approach the castle and enter.");
                 System.out.println();
@@ -591,13 +591,13 @@ public class TextAdventure {
                 weapon = "Iusus Axe";
                 weaponDMG = 50;
                 vrb = "swing";
-                if (luck >= 3) {
+                if (luck >= 4) {
                     luck -= 2;
-                } else if (luck < 3) {
-                    luck = 1;
+                } else if (luck < 4) {
+                    luck = 2;
                 }
                 System.out.println();
-                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 2 points, putting you at " + luck + "/10 luck.");
+                System.out.println("You have chosen the " + weapon + "! It is heavy in your hands. This weapon deals " + weaponDMG + " damage and your luck has decreased by 2 points, putting you at " + luck + "/20 luck.");
                 System.out.println();
                 System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland. You approach the castle and enter.");
                 System.out.println();
@@ -614,11 +614,11 @@ public class TextAdventure {
                 weapon = "Iusus Bow";
                 weaponDMG = 23;
                 vrb = "shoot";
-                if (luck < 9) {
-                    luck++;
+                if (luck < 18) {
+                    luck ++;
                 }
                 System.out.println();
-                System.out.println("You have chosen the " + weapon + "! It is light in your hands. This weapon deals " + weaponDMG + " damage and your luck has increased by 1 point, putting you at " + luck + "/10 luck.");
+                System.out.println("You have chosen the " + weapon + "! It is light in your hands. This weapon deals " + weaponDMG + " damage and your luck has increased by 1 point, putting you at " + luck + "/20 luck.");
                 System.out.println();
                 System.out.println("You and your company of Noble Knights travel tirelessly through the land in the direction of Castle Diaboli, overcoming any troubles that arise and conquering any foes that get in your way. After days of traveling your group finally reach the outskirts of Castle Diaboli. The Noble Knights of Bonum wish you luck with the rest of your journey and begin their way back to their homeland.");
                 System.out.println();
@@ -637,7 +637,7 @@ public class TextAdventure {
         } else if (a == 2) {
             weapon = "Iusus Sword";
             weaponDMG = 34;
-            if (luck < 9) {
+            if (luck < 18) {
                 luck++;
             }
             if (hp <= 70) {
@@ -648,7 +648,7 @@ public class TextAdventure {
             System.out.println();
             System.out.println("\"As you wish!\" says the king. You then explain to him your journey. The Noble King replies, \"Your quest is honorable and good. I will send with you a small group of Noble Knights to accompany you on your journey up to the Wasteland of Periculum, but they shall go no further than that. I shall also gift you this sword to aid you in the battles to come, as well as some food and water.\" You thank the king and ready yourself to continue your journey with your group of Noble Knights.");
             System.out.println();
-            System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the king's food and water! You also gained a luck point from this and are now at " + luck + "/10 luck.");
+            System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the king's food and water! You also gained a luck point from this and are now at " + luck + "/20 luck.");
             System.out.println();
             System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland.");
             System.out.println();
@@ -695,7 +695,7 @@ public class TextAdventure {
     }
 
     public void goblinBattlePlayerTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
             if (attack > luck) {
                 System.out.println();
                 System.out.println("You " + vrb + " and miss! The Pack of Goblins take 0 damage and their health remains at " + goblinHP + " health points.");
@@ -723,13 +723,13 @@ public class TextAdventure {
                 } else {
                     hp += 40;
                     armor = "Iron Chainmail";
-                    if (luck < 9) {
+                    if (luck < 18) {
                         luck++;
                     }
                     System.out.println();
                     System.out.println("You have successfully killed the Pack of Goblins!");
                     System.out.println();
-                    System.out.println("Among the remains you see a shining set of iron armor, which you promptly equip. The " + armor + " gives you 40 extra health points, putting your health at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/10.");
+                    System.out.println("Among the remains you see a shining set of iron armor, which you promptly equip. The " + armor + " gives you 40 extra health points, putting your health at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/20.");
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -744,7 +744,7 @@ public class TextAdventure {
     }
 
     public void goblinBattleGoblinTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
         if (attack <= luck) {
             System.out.println();
             System.out.println("The Goblins swing and miss! You take 0 damage and your health remains at " + hp + " health points!");
@@ -933,7 +933,7 @@ public class TextAdventure {
     }
 
     public void trollBattlePlayerTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
             if (attack > luck) {
                 System.out.println();
                 System.out.println("You " + vrb + " and miss! The Troll takes 0 damage and his health remains at " + trollHP + " health points.");
@@ -959,7 +959,7 @@ public class TextAdventure {
                         trollBattleTrollTurn();
                     }
                 } else {
-                    if (luck < 9) {
+                    if (luck < 18) {
                         luck++;
                     }
                     hp += 100;
@@ -967,7 +967,7 @@ public class TextAdventure {
                     System.out.println();
                     System.out.println("The Troll falls dead with a mighty crash!");
                     System.out.println();
-                    System.out.println("You plunder some of the Troll's treasure, taking 400 crowns, putting your total at " + money + " crowns. You also find a vial of healing potion among the Troll's posessions, which you drink. The potion gives you 100 health, putting you at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/10.");
+                    System.out.println("You plunder some of the Troll's treasure, taking 400 crowns, putting your total at " + money + " crowns. You also find a vial of healing potion among the Troll's posessions, which you drink. The potion gives you 100 health, putting you at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/20.");
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -982,7 +982,7 @@ public class TextAdventure {
     }
 
     public void trollBattleTrollTurn () {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
         if (attack <= luck) {
             System.out.println();
             System.out.println("The Troll swings and misses! You take 0 damage and your health remains at " + hp + " health points!");
@@ -1093,24 +1093,24 @@ public class TextAdventure {
         System.out.println();
         System.out.println("You come upon a storage room built on the edge of an underground river flowing with clean water. You drink your fill and gain 50 health, putting you at " + hp + " health points! You also see a variety of weapons and a lone goblin in the corner of the storage room. \"Wanna buy something? You'll need some heavy weaponry if you want to walk out of here alive\" says the Friendly Goblin. Do you want to buy anything? You have " + money + " crowns.");
         System.out.println();
-        System.out.println("1) Purchase the Giant Crossbow. Deals 60 damage and decreases your luck by 1. - 600 crowns");
-        System.out.println("2) Purchase the Hunter's Longsword. Deals 80 damage and decreases your luck by 2. - 400 crowns");
-        System.out.println("3) Purchase the Great Hammer of Malum. Deals 100 damage and decreases your luck by 3. - 200 crowns");
+        System.out.println("1) Purchase the Giant Crossbow. Deals 60 damage and increases your luck by 4. - 700 crowns");
+        System.out.println("2) Purchase the Hunter's Longsword. Deals 80 damage and increases your luck by 2. - 500 crowns");
+        System.out.println("3) Purchase the Great Hammer of Malum. Deals 100 damage and does not effect your luck. - 300 crowns");
         System.out.println("4) Purchase nothing and continue on your journey.");
         int a = myScanner.nextInt();
 
-        if (a == 1 && money >= 600) {
-            money -= 600;
+        if (a == 1 && money >= 700) {
+            money -= 700;
             weapon = "Giant Crossbow";
             vrb = "shoot";
             weaponDMG = 60;
-            if (luck > 1) {
-                luck --;
+            if (luck < 15) {
+                luck += 4;
             } else {
-                luck = 1;
+                luck = 18;
             }
             System.out.println();
-            System.out.println("You have spent 600 crowns to buy the Giant Crossbow. It deals 60 damage, you now have " + money + " crowns, and your luck decreases by 1 point, putting your luck at " + luck + "/10.");
+            System.out.println("You have spent 700 crowns to buy the Giant Crossbow. It deals 60 damage, you now have " + money + " crowns, and your luck increases by 4 points, putting your luck at " + luck + "/20.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
@@ -1121,25 +1121,25 @@ public class TextAdventure {
                 System.out.println();
                 dragonLordMalum();
             }
-        } else if (a == 1 && money < 600) {
+        } else if (a == 1 && money < 700) {
             System.out.println();
             System.out.println("----------------------------------------------------------------------------");
             System.out.println();
             System.out.println("You do not have enough money for this item.");
             System.out.println();
             preMalumTreasure();
-        } else if (a == 2 && money >= 400) {
+        } else if (a == 2 && money >= 500) {
             money -= 400;
             weapon = "Hunter's Longsword";
             vrb = "swing";
             weaponDMG = 80;
-            if (luck > 2) {
-                luck -= 2;
+            if (luck < 17) {
+                luck += 2;
             } else {
-                luck = 1;
+                luck = 18;
             }
             System.out.println();
-            System.out.println("You have spent 400 crowns to buy the Hunter's Longsword. It deals 80 damage, you now have " + money + " crowns, and your luck decreases by 2, putting your luck at " + luck + "/10.");
+            System.out.println("You have spent 500 crowns to buy the Hunter's Longsword. It deals 80 damage, you now have " + money + " crowns, and your luck increases by 2, putting your luck at " + luck + "/20.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
@@ -1150,25 +1150,20 @@ public class TextAdventure {
                 System.out.println();
                 dragonLordMalum();
             }
-        } else if (a == 2 && money < 400) {
+        } else if (a == 2 && money < 500) {
             System.out.println();
             System.out.println("----------------------------------------------------------------------------");
             System.out.println();
             System.out.println("You do not have enough money for this item.");
             System.out.println();
             preMalumTreasure();
-        } else if (a == 3 && money >= 200) {
+        } else if (a == 3 && money >= 300) {
             money -= 200;
             weapon = "Great Hammer of Malum";
             vrb = "swing";
             weaponDMG = 100;
-            if (luck > 3) {
-                luck -= 3;
-            } else {
-                luck = 1;
-            }
             System.out.println();
-            System.out.println("You have spent 200 crowns to buy the Great Hammer of Malum. It deals 100 damage, you now have " + money + " crowns, and your luck decreases by 3 points and is now at " + luck + "/10.");
+            System.out.println("You have spent 300 crowns to buy the Great Hammer of Malum. It deals 100 damage, you now have " + money + " crowns, and your luck is not effected and is still at " + luck + "/20.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
@@ -1201,9 +1196,9 @@ public class TextAdventure {
             money -= 1000;
             weapon = "Gjallarhorn";
             weaponDMG = 1000;
-            luck = 10;
+            luck = 20;
             System.out.println();
-            System.out.println("You have spent 1000 crowns to buy Gjallarhorn. It deals 1000 damage, you now have " + money + " crowns, and your luck is now 10/10. Have fun.");
+            System.out.println("You have spent 1000 crowns to buy Gjallarhorn. It deals 1000 damage, you now have " + money + " crowns, and your luck is now 20/20. Have fun.");
             System.out.println();
             System.out.print("Press 1 to continue on your way: ");
             int b = myScanner.nextInt();
@@ -1250,7 +1245,7 @@ public class TextAdventure {
     }
 
     public void malumBattlePlayerTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
             if (attack > luck) {
                 dragonLordMalumHP += 10;
                 System.out.println();
@@ -1300,7 +1295,7 @@ public class TextAdventure {
     }
 
     public void malumBattleMalumTurn() {
-        int attack = randomGenerator.nextInt(10) + 1;
+        int attack = randomGenerator.nextInt(20) + 1;
         if (attack <= luck) {
             System.out.println();
             System.out.println("Dragon Lord Malum swings at you and misses! You take 0 damage and your health remains at " + hp + " health points!");
