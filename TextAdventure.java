@@ -405,6 +405,12 @@ public class TextAdventure {
         System.out.println("The elves quickly let you pass the outpost gates but give you this somber news:");
         System.out.println("\"We are glad to be able to give you this news now, before you made the rest of the journey to Bonum: You are too late. The fair Castle Bonum has fallen and the Noble King there has been killed. An army of Ogres from the region of Mount Tormentum stormed the castle and ransacked it, leaving only a few survivors. Some of those survivors were lucky enough to find our camp here and have recieved medical care and food.\"");
         System.out.println();
+        System.out.print("Press 1 to continue: ");
+        int cont = myScanner.nextInt();
+        if (cont == 1) {
+
+        }
+        System.out.println();
         System.out.println("The elves lead you into their main camp where you see an abundant village full of elves and humans. The kind elves offer food and water for your journey, which you accept. The elves also point you in the direction of a path leading East through the Plains of Fertility. They say that the path East will take you to a Farming Village near the coast of the Sea of Treachery, which you can use to quickly reach Castle Diaboli. Which path do you take?");
         System.out.println();
         System.out.println("1) Journey West to search for anyone among the ruins of Castle Bonum who may help you along your journey.");
@@ -414,14 +420,10 @@ public class TextAdventure {
         if (a == 1) {
             System.out.println();
             System.out.println("You journey Westward towards the ruins of Castle Bonum and around the Caelum Mountains.");
-            System.out.println();
-            System.out.println("----------------------------------------------------------------------------");
             sackedCastleBonum();
         } else if (a == 2) {
             System.out.println();
             System.out.println("You take the elves' advice and travel East into the Plains of Fertility.");
-            System.out.println();
-            System.out.println("----------------------------------------------------------------------------");
             plainsOfFertility();
         }
     }
@@ -512,7 +514,7 @@ public class TextAdventure {
         }
         
         System.out.println();
-        System.out.print("Press 1 to continue ");
+        System.out.print("Press 1 to continue: ");
         int a = myScanner.nextInt();
         if (a == 1) {
             elvenCampOne();
@@ -816,11 +818,110 @@ public class TextAdventure {
     }
 
     public void sackedCastleBonum() {
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("As you approach the famed Castle Bonum you notice smoke billows rising from the city. You continue forwards, quickly losing hope of finding any survivors. You come to the edge of the castle, just behind the walls. You peek inside the castle and see the aftermath of a horrible battle, and no human survivors to be found.");
+        System.out.println();
+        System.out.println("The Ogre Army is everywhere. What do you do?");
+        System.out.println();
+        System.out.println("1) Attempt to sneak around the Ogre Army and through the halls of Castle Bonum to look for any survivors.");
+        System.out.println("2) Run away and reassess your options at the Elven Camp in the North.");
+        int a = myScanner.nextInt();
+        if (a == 1) {
+            int sneak = randomGenerator.nextInt(20) + 1;
+            if (sneak > luck) {
+                System.out.println();
+                System.out.println("You are caught by the Ogre Army! You are quickly overrun and killed by the many Ogres.");
+                System.out.println();
+                gameOver();
+            } else if (sneak <= luck) {
+                System.out.println();
+                System.out.println("You successfully sneak past the Ogre Army and enter Castle Bonum! As you enter the inner chambers of the castle you search room after room in hope of finding any survivors. After a while of searching you reach the lowest level of the castle, the dungeon...");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
 
+                }
+                System.out.println();
+                System.out.println("You enter the dungeon of Castle Bonum and are relieved to see a small group of survivors! You quickly lead the group back up to the ground level of the castle and attempt to sneak past the Ogre Army once more...");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int c = myScanner.nextInt();
+                if (c == 1) {
+
+                }
+                int secondSneak = randomGenerator.nextInt(20) + 1;
+                if (secondSneak > luck) {
+                    System.out.println();
+                    System.out.println("You are caught by the Ogre Army! You and your group of survivors are quickly overrun and killed by the many Ogres.");
+                    System.out.println();
+                    gameOver();
+                } else if (secondSneak <= luck) {
+                    money += 200;
+                    weapon = "Iusus Bow";
+                    weaponDMG = 23;
+                    vrb = "shoot";
+                    if (luck < 18) {
+                        luck ++;
+                    }
+                    System.out.println();
+                    System.out.println("You and your group of survivors successfully sneak past the Ogre Army and continue on towards the Elven Camp! On arrival at the Elven Camp the group of survivors gift you with 200 crowns and a bow from the defeated Bonum Army, which does " + weaponDMG + " damage. You also gain a luck point from this encounter, putting your total luck at " + luck + "/20.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int d = myScanner.nextInt();
+                    if (d == 1) {
+                        postSackedBonumElvenCamp();
+                    }
+                }
+            }
+        } else if (a == 2) {
+            System.out.println();
+            System.out.println("You run away from the Ogre Army and head back to the Elven Camp in the North.");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int b = myScanner.nextInt();
+            if (b == 1) {
+                postSackedBonumElvenCamp();
+            }
+        }
+    }
+
+    public void postSackedBonumElvenCamp() {
+        System.out.println();
+        System.out.println("As you return to the Elven Camp in the North you are left with only two options:");
+        System.out.println();
+        System.out.println("1) Head East through the Plains of Fertility and onwards to the Sea of Treachery.");
+        System.out.println("2) Attempt to ask the Elves for help on your journey to Castle Diaboli.");
+        int a = myScanner.nextInt();
+        if (a == 1) {
+            System.out.println();
+            System.out.println("You decide to head East towards the Plains of Fertility.");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int cont = myScanner.nextInt();
+            if (cont == 1) {
+                plainsOfFertility();
+            }
+        } else if (a == 2) {
+            System.out.println();
+            System.out.println("You seek counsel with the King of the Elves. He accepts your request and you enter into his tent and explain your journey to him. He replies: \"Young traveler, your quest is very noble. However, I will not risk my own for the quest of a stranger. You are welcome to stay here and rest as long as you'd like, but I cannot help you past that.\"");
+            System.out.println();
+            System.out.println("You thank the King of the Elves and continue on your journey through the only remaining path: East towards the Plains of Fertility.");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int cont = myScanner.nextInt();
+            if (cont == 1) {
+                plainsOfFertility();
+            }
+        }
     }
 
     public void plainsOfFertility() {
-
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
     }
 
     public void wastelandOfPericulumSouth() {
@@ -874,7 +975,7 @@ public class TextAdventure {
             } else if (a == 3) {
                 hp -= 30;
                 System.out.println();
-                System.out.println("You choose to turn away from the Goblin Camp at the Westernmost entrance to the Wasteland of Periculum and travel several days North without food or water to reach the Northmost entrance trail into the wasteland. You loose 30 health from this due to lack of food and water, putting your health at " + hp + " health points.");
+                System.out.println("You choose to turn away from the Goblin Camp at the Westernmost entrance to the Wasteland of Periculum and travel several days North without food or water to reach the Northmost entrance trail into the wasteland. You lose 30 health from this due to lack of food and water, putting your health at " + hp + " health points.");
                 System.out.println();
                 System.out.print("Press 1 to continue into the Wasteland of Periculum from the Northmost Entrance: ");
                 int b = myScanner.nextInt();
@@ -1242,10 +1343,8 @@ public class TextAdventure {
                     System.out.print("Press 1 to initialize battle with the Troll! ");
                     int d = myScanner.nextInt();
                     if (d == 1) {
-                        System.out.println();
                         trollBattlePlayerTurn();
                     } else {
-                        System.out.println();
                         trollBattlePlayerTurn();
                     }
                 }
@@ -1256,10 +1355,8 @@ public class TextAdventure {
                 System.out.print("Press 1 to initialize battle with the Troll! ");
                 int f = myScanner.nextInt();
                 if (f == 1) {
-                    System.out.println();
                     trollBattlePlayerTurn();
                 } else {
-                    System.out.println();
                     trollBattlePlayerTurn();
                 }
             }
@@ -1522,8 +1619,10 @@ public class TextAdventure {
             System.out.print("Press 1 to continue: ");
             int b = myScanner.nextInt();
             if (b == 1) {
+                System.out.println();
                 dragonLordMalum();
             } else {
+                System.out.println();
                 dragonLordMalum();
             }
         } else if (a == 5 && money >= 1000) {
