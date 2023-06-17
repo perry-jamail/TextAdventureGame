@@ -17,6 +17,7 @@ public class TextAdventure {
     int dragonLordMalumHP;
     String vrb;
     int gangOfThievesHP;
+    int goblinCampHP;
 
     public TextAdventure() {
 
@@ -337,10 +338,13 @@ public class TextAdventure {
                 } else {
                     money += 200;
                     hp += 30;
+                    if (luck < 18) {
+                        luck ++;
+                    }
                     System.out.println();
                     System.out.println("You have successfully killed the Gang of Thieves!");
                     System.out.println();
-                    System.out.println("You loot 200 crowns and a small vial of healing potion from them, bringing your total crowns to " + money + ". You drink the small vial of healing potion, increasing your health by 30 points and putting your total at " + hp + " health points. You then continue through the treacherous mountain range and on towards Castle Bonum.");
+                    System.out.println("You loot 200 crowns and a small vial of healing potion from them, bringing your total crowns to " + money + ". You drink the small vial of healing potion, increasing your health by 30 points and putting your total at " + hp + " health points. You also gain 1 luck point from this encounter, putting your total luck at " + luck + "/20. You then continue through the treacherous mountain range and on towards Castle Bonum.");
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -537,7 +541,7 @@ public class TextAdventure {
         System.out.println();
         System.out.println("You humbly explain your journey to the Noble King. The King raises an eyebrow at your tale and replies, \"Your quest is most honorable and good. I will send with you a small group of Noble Knights to accompany you on your journey up to the Wasteland of Periculum, but they shall go no further than that. I shall also gift you this sword to aid you in the battles to come, as well as some food and water.\" You thank the King and ready yourself to continue your journey with your group of Noble Knights.");
         System.out.println();
-        System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the King's food and water!");
+        System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and gain 30 health, putting you at " + hp + " health points because of the King's food and water!");
         System.out.println();
         System.out.print("Press 1 to continue: ");
         int c = myScanner.nextInt();
@@ -578,7 +582,7 @@ public class TextAdventure {
             System.out.println();
             System.out.println("You have decided to join in the fight to save Castle Bonum! You rush to the castle walls and see an army of Ogres storming the castle. You pick your target and engage in battle!");
             System.out.println();
-            System.out.println("Press 1 to initialize battle with the looming Ogre!");
+            System.out.print("Press 1 to initialize battle with the looming Ogre! ");
             int b = myScanner.nextInt();
             if (b == 1) {
                 ogreBattlePlayerTurn();
@@ -678,19 +682,18 @@ public class TextAdventure {
         System.out.println("\"" + playerName + "! I have heard of your bravery on the battlefield and was notified that you are a foreigner in this land. I would like to personally welcome you to Castle Bonum and invite you to the royal feast!\"");
         System.out.println();
         System.out.println("Do you accept the king's invitation?");
+        System.out.println();
         System.out.println("1) Yes");
         System.out.println("2) No");
         int a = myScanner.nextInt();
 
         if (a == 1) {
-            if (hp < 100) {
-                hp = 100;
-            }
+            hp += 50;
             if (luck < 18) {
                 luck++;
             }
             System.out.println();
-            System.out.println("\"Excellent!\" says the king. You are led to a room to wait for dinner. After some time a royal servant leads you to the king's feast. At the feast you eat and drink until you are full. This increases your health back to 100 health points! You then explain your journey to the king.");
+            System.out.println("\"Excellent!\" says the king. You are led to a room to wait for dinner. After some time a royal servant leads you to the king's feast. At the feast you eat and drink until you are full. This increases your health by 50 points, putting you at " + hp + " health points! You then explain your journey to the king.");
             System.out.println();
             System.out.print("Press 1 to continue: ");
             int d = myScanner.nextInt();
@@ -698,7 +701,7 @@ public class TextAdventure {
 
             }
             System.out.println();
-            System.out.println("The king replies: \"Your journey is most honorable and good! I will do my part in aiding your quest to Castle Diaboli to rescue the Princess of Incipiam by providing you with full access to my armory and a full company of Noble Knights on your quest! However, my only wish is that my men do not step inside the castle walls of Diaboli, for it is a foul place filled with evil. The time to cleanse that place will come, but not today. I wish you the best of luck in conquering anything you may face within the walls of Diaboli, but my men must not step into that place.\"");
+            System.out.println("The king replies: \"Your journey is most honorable and good! I will do my part in aiding your quest to Castle Diaboli to rescue the Princess of Incipiam by providing you with full access to my armory and a full company of Noble Knights on your journey! However, my only wish is that my men do not step inside the castle walls of Diaboli, for it is a foul place filled with evil. The time to cleanse that place will come, but not today. I wish you the best of luck in conquering anything you may face within the walls of that terrible castle, but my men must not step into that place.\"");
             System.out.println();
             System.out.print("Press 1 to continue: ");
             int cont = myScanner.nextInt();
@@ -784,17 +787,19 @@ public class TextAdventure {
             if (luck < 18) {
                 luck++;
             }
-            if (hp <= 70) {
-                hp += 30;
-            } else if (hp > 70) {
-                hp = 100;
-            }
+            hp += 30;
             System.out.println();
             System.out.println("\"As you wish!\" says the king. You then explain to him your journey. The Noble King replies, \"Your quest is honorable and good. I will send with you a small group of Noble Knights to accompany you on your journey up to the Wasteland of Periculum, but they shall go no further than that. I shall also gift you this sword to aid you in the battles to come, as well as some food and water.\" You thank the king and ready yourself to continue your journey with your group of Noble Knights.");
             System.out.println();
-            System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and are at " + hp + " health points because of the king's food and water! You also gained a luck point from this and are now at " + luck + "/20 luck.");
+            System.out.println("You now have an " + weapon + ", which deals " + weaponDMG + " damage and gain 30 health, putting you at " + hp + " health points because of the king's food and water! You also gained a luck point from this and are now at " + luck + "/20 luck.");
             System.out.println();
-            System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland.");
+            System.out.print("Press 1 to continue: ");
+            int next = myScanner.nextInt();
+            if (next == 1) {
+                
+            }
+            System.out.println();
+            System.out.println("You journey on with your group of Noble Knights, overcoming any challenge and conquering any foe that opposes you on your journey. You finally come up on the Wasteland of Periculum, the last challenge before you reach Castle Diaboli, submerged in an endless darkness. Your group of Noble Knights wish you well on the rest of your journey and head back to their homeland.");
             System.out.println();
             System.out.println("You face the wasteland and enter.");
             System.out.println();
@@ -821,6 +826,191 @@ public class TextAdventure {
     public void wastelandOfPericulumSouth() {
         System.out.println("----------------------------------------------------------------------------");
         System.out.println();
+        System.out.println("You venture into the Wasteland of Periculum from the Westernmost entrance into the land. As you journey forward you see the faint glow of a fire off in the distance. You distance yourself from the main path and hide yourself in the darkness as you continue. You come up right outside of a heavily populated Goblin Camp!");
+        System.out.println();
+        System.out.println("What do you do?");
+        System.out.println();
+        System.out.println("1) Sneak around the camp to avoid detection.");
+        System.out.println("2) Fight through and loot the Goblin Camp.");
+        System.out.println("3) Turn away from the camp and travel to the Northernmost entrance trail into the wasteland. This will require a long journey without food or water...");
+        int a = myScanner.nextInt();
+
+        if (a == 1) {
+            int sneak = randomGenerator.nextInt(20) + 1;
+            if (sneak > luck) {
+                System.out.println();
+                System.out.println("You were caught by the Goblins! Prepare to fight!");
+                System.out.println();
+                System.out.print("Press 1 to initialize battle with the Goblin Mob! ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    goblinCampHP = 105;
+                    System.out.println();
+                    System.out.println("----------------------------------------------------------------------------");
+                    goblinCampBattlePlayerTurn();
+                }
+            } else if (sneak <= luck) {
+                System.out.println();
+                System.out.println("You successfully sneak past the Goblin Camp and continue on your journey through the Wasteland of Periculum on the Westernmost trail to Castle Diaboli.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int c = myScanner.nextInt();
+                if (c == 1) {
+                    preDiaboliPericulumSouth();
+                }
+            }
+            } else if (a == 2) {
+                System.out.println();
+                System.out.println("You storm the camp! Prepare to fight!");
+                System.out.println();
+                System.out.print("Press 1 to initialize battle with the Goblin Mob! ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    goblinCampHP = 105;
+                    System.out.println();
+                    System.out.println("----------------------------------------------------------------------------");
+                    goblinCampBattlePlayerTurn();
+                }
+            } else if (a == 3) {
+                hp -= 30;
+                System.out.println();
+                System.out.println("You choose to turn away from the Goblin Camp at the Westernmost entrance to the Wasteland of Periculum and travel several days North without food or water to reach the Northmost entrance trail into the wasteland. You loose 30 health from this due to lack of food and water, putting your health at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue into the Wasteland of Periculum from the Northmost Entrance: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    System.out.println();
+                    System.out.println("----------------------------------------------------------------------------");
+                    System.out.println();
+                    wastelandOfPericulumNorth();
+                }
+            }
+        }
+
+    public void preDiaboliPericulumSouth() {
+        System.out.println();
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("As you continue through the desert wasteland you come upon a small sheet of metal and wood halfway buried in the sand. Interested, you pick it up. Once you dig it out of the sand you realize that it is an old shield, damaged beyond repair. On the back of the shield is written: ");
+        System.out.println();
+        System.out.println("\"Right... Middle...");
+        System.out.println();
+        System.out.println("Undecided on the meaning of the cryptic message you toss the shield down and continue on your way. After a little further you reach the dreaded Castle Diaboli...");
+        System.out.println();
+        System.out.print("Press 1 to continue into the Castle: ");
+        int a = myScanner.nextInt();
+        if (a == 1) {
+
+        }
+        System.out.println();
+        castleDiaboli();    
+    }
+
+    public void goblinCampBattlePlayerTurn() {
+        int attack = randomGenerator.nextInt(20) + 1;
+            if (attack > luck) {
+                System.out.println();
+                System.out.println("You " + vrb + " and miss! The Goblin Mob takes 0 damage and their health remains at " + goblinCampHP + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int a = myScanner.nextInt();
+                if (a == 1) {
+                    goblinCampBattleGoblinsTurn();
+                } else {
+                    goblinCampBattleGoblinsTurn();
+                }
+            } else if (attack <= luck) {
+                goblinCampHP -= weaponDMG;
+                if (goblinCampHP > 0) {
+                    System.out.println();
+                    System.out.println("You " + vrb + " with your " + weapon + " and successfully hit the Goblin Mob, dealing " + weaponDMG + " damage to them! The Goblin's health is now at " + goblinCampHP + " health points.");
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int b = myScanner.nextInt();
+                    if (b == 1) {
+                        goblinCampBattleGoblinsTurn();
+                    } else {
+                        goblinCampBattleGoblinsTurn();
+                    }
+                } else {
+                    hp += 50;
+                    if (luck < 18) {
+                        luck++;
+                    }
+                    System.out.println();
+                    System.out.println("You have successfully killed the Goblin Mob!");
+                    System.out.println();
+                    System.out.println("As you loot the Goblin Camp you come across a medium vial of healing potion, which you drink. This increases your health by 50 points, putting you at " + hp + " total health points. You also come across a small but lethal-looking dagger. Do you equip this? You currently have your " + weapon + " as your weapon.");
+                    System.out.println();
+                    System.out.println("1) Yes, take and equip the dagger.");
+                    System.out.println("2) No, keep my " + weapon + " equipped.");
+                    int d = myScanner.nextInt();
+                    if (d == 1) {
+                        weapon = "Malum Dagger";
+                        vrb = "stab";
+                        weaponDMG = 20;
+                        if (luck < 17) {
+                            luck += 2;
+                        } else {
+                            luck = 18;
+                        }
+                        System.out.println();
+                        System.out.println("You equip the Malum Dagger, but as you do you hear a piercing voice come out of the darkness: \"I AM THE DAY. I AM THE NIGHT. I AM MALUM!\" The dagger does 20 damage and increases your luck by 2, putting your total luck at " + luck + "/20.");
+                    } else if (d == 2) {
+                        System.out.println();
+                        System.out.println("You leave the dagger and continue on towards Castle Diaboli.");
+                    }
+                    System.out.println();
+                    System.out.print("Press 1 to continue: ");
+                    int c = myScanner.nextInt();
+                    if (c == 1) {
+                        preDiaboliPericulumSouth();
+                    } else {
+                        preDiaboliPericulumSouth();
+                    }
+                }
+
+            }
+    }
+
+    public void goblinCampBattleGoblinsTurn() {
+        int attack = randomGenerator.nextInt(20) + 1;
+        if (attack <= luck) {
+            System.out.println();
+            System.out.println("The Goblin Mob swings and misses! You take 0 damage and your health remains at " + hp + " health points!");
+            System.out.println();
+            System.out.print("Press 1 to continue: ");
+            int a = myScanner.nextInt();
+            if (a == 1) {
+                goblinCampBattlePlayerTurn();
+            } else {
+                goblinCampBattlePlayerTurn();
+            }
+        } else if (attack > luck) {
+            int goblinDMG = 25;
+            hp -= goblinDMG;
+            if (hp > 0) {
+                System.out.println();
+                System.out.println("The Goblin Mob swings and hits you! You take " + goblinDMG + " damage and are now at " + hp + " health points.");
+                System.out.println();
+                System.out.print("Press 1 to continue: ");
+                int b = myScanner.nextInt();
+                if (b == 1) {
+                    goblinCampBattlePlayerTurn();
+                } else {
+                    goblinCampBattlePlayerTurn();
+                }
+            } else {
+                System.out.println();
+                System.out.println("The Goblins deal the final killing blow to you and you die.");
+                System.out.println();
+                gameOver();
+            }
+        }
+    }
+
+    public void wastelandOfPericulumNorth() {
+
     }
 
     public void castleDiaboli() {
@@ -1022,7 +1212,7 @@ public class TextAdventure {
             System.out.println();
             System.out.println("Looking around the Troll's massive room you get an idea. \"What if I can help you with this mighty collection you have here?\" you say, pointing to the piles of silver and gold crowns littered throughout the room. \"Oh?\" the troll ponders. After a minute he says, \"Sure. Give me all your valuables and I'll let you pass.\"");
             System.out.println();
-            System.out.println("Give the Troll all of your crowns?");
+            System.out.println("Give the Troll all of your crowns? You currently have " + money + " total crowns.");
             System.out.println();
             System.out.println("1) Yes");
             System.out.println("2) No");
@@ -1107,11 +1297,11 @@ public class TextAdventure {
                         luck++;
                     }
                     hp += 100;
-                    money += 400;
+                    money += 300;
                     System.out.println();
                     System.out.println("The Troll falls dead with a mighty crash!");
                     System.out.println();
-                    System.out.println("You plunder some of the Troll's treasure, taking 400 crowns, putting your total at " + money + " crowns. You also find a vial of healing potion among the Troll's posessions, which you drink. The potion gives you 100 health, putting you at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/20.");
+                    System.out.println("You plunder some of the Troll's treasure, taking 300 crowns, putting your total at " + money + " crowns. You also find a vial of healing potion among the Troll's posessions, which you drink. The potion gives you 100 health, putting you at " + hp + " health points. You also gain 1 luck point for this encounter, putting your luck at " + luck + "/20.");
                     System.out.println();
                     System.out.print("Press 1 to continue: ");
                     int c = myScanner.nextInt();
@@ -1389,6 +1579,9 @@ public class TextAdventure {
     }
 
     public void malumBattlePlayerTurn() {
+        if (weapon == "Malum Dagger") {
+            weaponDMG = 150;
+        }
         int attack = randomGenerator.nextInt(20) + 1;
             if (attack > luck) {
                 dragonLordMalumHP += 10;
